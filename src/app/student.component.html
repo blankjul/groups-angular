@@ -1,0 +1,48 @@
+<div style="padding:30px 0px;">
+
+  <div class="input-group">
+    <input type="text" class="form-control" placeholder="Add..." [(ngModel)]="txtAdd"
+           (keypress)="($event.charCode==13)? onAdd() : return"/>
+    <span class="input-group-btn">
+        <button class="btn btn-default" (click)="onAdd()" type="button">Add</button>
+      </span>
+  </div>
+
+
+</div>
+
+
+
+
+<table class="table table-hover-aliceblue">
+  <thead><tr><th>Name</th></tr></thead>
+
+  <tbody>
+
+  <ng-container *ngFor="let member of problem.members; let i = index">
+    <tr (click)="toogle(member)">
+      <td style="width:100%">{{member.name}}</td>
+      <td><span class="label label-success">{{member.preferences.size}}</span></td>
+      <td><span class="label label-danger">{{member.rejections.size}}</span></td>
+      <td><span (click)="onDelete(member)" style="cursor:pointer; margin:4px 0px 4px 8px;">×</span></td>
+    </tr>
+
+    <ng-container *ngIf="membersToShow.has(member)">
+      <table class="table" style="background-color:#f3f3f3">
+        <ng-container *ngFor="let other of membersExcept(member); let j = index;">
+          <tr
+            [ngClass]="{'background-green' : member.prefers(other), 'background-red' : member.rejects(other)}"
+            (click)="onCollapseClick(member,other)">
+            <td><span style="margin-left:10px;">{{other.name}}</span></td>
+          </tr>
+        </ng-container>
+      </table>
+    </ng-container>
+
+  </ng-container>
+
+  </tbody>
+
+</table>
+
+

@@ -1,0 +1,37 @@
+<div class="input-group" *ngIf="problem.members.length > inGroup">
+  <input type="number" class="form-control" placeholder="Add Group" [(ngModel)]="txtAdd"
+         (keypress)="($event.charCode==13)? onAdd() : return"/>
+  <span class="input-group-btn">
+        <button class="btn btn-default" (click)="onAdd()" type="button">Add</button>
+      </span>
+</div>
+
+
+<div class="alert alert-info" style="margin-top:20px">
+  <ul class="list-group">
+    <li class="list-group-item">Students all: {{problem.members.length }}</li>
+    <li class="list-group-item">Students assigned: {{ inGroup }}</li>
+    <li class="list-group-item">Students to be assigened: {{ problem.members.length - inGroup }}</li>
+  </ul>
+</div>
+
+
+<div *ngIf="problem.groupLimits.length > 0"
+     id="group-limits"
+     style="margin-top:20px"
+>
+
+  <ul class="list-group">
+    <li class="list-group-item" *ngFor="let num of problem.groupLimits; let i = index;">
+
+      <div style="overflow: auto">
+        <span>Group {{i+1}} -> {{ num }}</span>
+        <span (click)="onDelete(i)" style="cursor:pointer; float: right; margin-right: 10px;">×</span>
+      </div>
+
+    </li>
+  </ul>
+</div>
+
+
+

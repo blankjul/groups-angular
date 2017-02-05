@@ -1,0 +1,21 @@
+<div>
+  <label for="lAlgorithm">Algorithm</label>
+  <ul id="lAlgorithm" class="list-group">
+    <li class="list-group-item"
+        *ngFor="let a of service.getAlgorithms();"
+        (click)="select(a)"
+        [ngClass]="{active: algorithm == a}">
+      {{a.constructor.name}}
+    </li>
+  </ul>
+</div>
+
+<div style="margin-top:20px;">
+  <label for="inMaxEval">Maximum Evaluations</label>
+  <div class="input-group">
+    <input id="inMaxEval" type="number" class="form-control" placeholder="Maximum Evaluations..."
+           [(ngModel)]="maxEvaluations"/>
+  </div>
+</div>
+
+

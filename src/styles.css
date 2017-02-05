@@ -1,0 +1,72 @@
+h1 {
+  color: #369;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 250%;
+}
+
+
+#wrapper {
+  padding: 0% 10% 5% 10%;
+}
+
+.list-with-refs li a {
+  margin: 0px;
+  display: block;
+  width: 100%;
+  height: 100%;
+  text-decoration: none;
+}
+
+.background-green {
+  background-color:#dff0d8 !important;
+}
+
+.background-red {
+  background-color:#ebcccc !important;
+}
+
+
+.table-hover-aliceblue tbody tr:hover{
+  background-color: aliceblue;
+  border-style: none;
+}
+
+
+.list-hover-aliceblue li:hover{
+  background-color: aliceblue;
+  border-style: none;
+}
+
+.list-hover-none li:hover{
+  background-color: transparent;
+}
+
+.list-hover-beige li:hover{
+  background-color: beige;
+  border-style: none;
+}
+
+.row-striped:nth-of-type(odd){
+  background-color: #efefef;
+}
+
+.row-striped:nth-of-type(even){
+  background-color: #ffffff;
+}
+
+
+
+
+.loader {
+  border: 4px solid #f3f3f3; /* Light grey */
+  border-top: 4px solid #3498db; /* Blue */
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}

@@ -1,0 +1,24 @@
+
+<ul class="list-group">
+
+  <li class="list-group-item" *ngFor="let group of getGroups(); let i = index;">
+
+    <div style="overflow:auto;">
+
+      <div style="float:left;"><span (click)="onDelete(group)" style="cursor:pointer; margin:4px 0px 4px 8px;">×</span></div>
+      <div style="float:right;"><span class="label label-{{hover()}}">{{group.size}}</span></div>
+
+
+      <div *ngFor="let member of group; let j = index;"
+           class="list-group-item"
+           style="border:0px; clear:right">
+        {{member.name}}
+      </div>
+
+    </div>
+
+  </li>
+
+</ul>
+
+

@@ -1,0 +1,54 @@
+
+<div *ngIf="isLoading" class="loader" style="margin:40px auto"></div>
+
+
+<table *ngIf="!isLoading" class="table table-hover-aliceblue">
+  <thead>
+  <tr>
+    <th>#Solution</th>
+    <th><span class="label label-success">min</span></th>
+    <th><span class="label label-danger">min</span></th>
+    <th>&#216;</th>
+  </tr>
+  </thead>
+
+  <tbody>
+
+  <ng-container *ngFor="let result of results; let i = index">
+    <tr (click)="toogle(result)">
+      <td style="width:100%">Solution {{i+1}}</td>
+      <td><span class="label label-success">{{result.minPref().toFixed(2)}}</span></td>
+      <td><span class="label label-danger">{{result.minRejs().toFixed(2)}}</span></td>
+      <td>{{result.satisfaction.toFixed(2)}}</td>
+    </tr>
+
+
+    <ng-container *ngIf="resultsToShow.has(result)">
+
+      <table class="table" style="background-color:#f3f3f3">
+        <tr>
+          <th>Group</th>
+          <th>Name</th>
+          <th></th>
+          <th></th>
+        </tr>
+        <ng-container *ngFor="let group of result.groups; let j = index">
+          <ng-container *ngFor="let member of group; let k = index">
+            <tr>
+              <td><span *ngIf="k==0">{{j+1}}</span></td>
+              <td style="width:100%"><span>{{member.name}}</span></td>
+              <td><span class="label label-success">{{result.mPreference.get(member).toFixed(2)}}</span></td>
+              <td><span class="label label-danger">{{result.mRejection.get(member).toFixed(2)}}</span></td>
+            </tr>
+          </ng-container>
+        </ng-container>
+      </table>
+
+    </ng-container>
+
+  </ng-container>
+
+
+  </tbody>
+
+</table>

@@ -1,0 +1,46 @@
+<div class="panel panel-primary">
+
+
+  <div class="panel-heading">
+    <h3 class="panel-title pull-left">
+      Smart Groups
+    </h3>
+    <button class="btn btn-default pull-right" data-toggle="modal" data-target="#myModal" (click)="onDialog()"><span
+      class="glyphicon glyphicon-upload"></span></button>
+    <div class="clearfix"></div>
+  </div>
+
+
+  <navigation [app]="this" ></navigation>
+
+
+  <hr>
+
+  <div id="wrapper" class="panel-body">
+    <div #content></div>
+  </div>
+
+
+</div>
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+          aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Data</h4>
+      </div>
+      <div class="modal-body">
+        <textarea class="form-control" rows="30" id="json" [(ngModel)]='txtInput'></textarea>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="onDialogSave()">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
