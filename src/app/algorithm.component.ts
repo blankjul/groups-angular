@@ -2,10 +2,7 @@ import {Problem} from "./model/problem";
 import {AbstractComponent} from "./abstract.component";
 import {ResultService} from "./result.service";
 import {Component, OnInit} from "@angular/core";
-import {RandomSearch} from "./algorithms/random.search";
 import {Algorithm} from "./algorithms/algorithm";
-import {HillClimbingAlgorithm} from "./algorithms/hill.climbing";
-import {EvolutionaryAlgorithm} from "./algorithms/evolutionary.algorithm";
 
 
 @Component({
@@ -15,8 +12,8 @@ import {EvolutionaryAlgorithm} from "./algorithms/evolutionary.algorithm";
 export class AlgorithmComponent extends AbstractComponent implements OnInit{
 
 
-  private algorithm:Algorithm;
-  private maxEvaluations: number = 10000;
+  algorithm:Algorithm;
+  maxEvaluations: number = 10000;
 
 
   constructor(public problem: Problem, public service: ResultService) {

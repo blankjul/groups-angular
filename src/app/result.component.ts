@@ -13,8 +13,6 @@ import {ResultService} from "./result.service";
 export class ResultComponent extends AbstractComponent implements OnInit{
 
 
-
-
   public isLoading: boolean = true;
   public results: Array<Solution>;
   public resultsToShow: Set<Solution> = new Set<Solution>();

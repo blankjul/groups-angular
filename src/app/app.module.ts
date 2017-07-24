@@ -11,11 +11,10 @@ import {ConstraintsGroupComponent} from "./constraints.groups.component";
 import {NavigationComponent} from "./navigation.component";
 import {AlgorithmComponent} from "./algorithm.component";
 import {ResultService} from "./result.service";
-import {ToastModule} from "ng2-toastr";
-import {ToolTipModule} from "angular2-tooltip/src/tool-tip.module";
+import {ToastModule} from 'ng2-toastr/ng2-toastr';
 
 @NgModule({
-  imports: [BrowserModule, FormsModule, ToastModule, ToolTipModule],
+  imports: [BrowserModule, FormsModule, ToastModule.forRoot()],
   declarations: [
     AppComponent,
     NavigationComponent,
