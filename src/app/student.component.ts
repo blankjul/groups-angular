@@ -1,8 +1,7 @@
-import {Component} from "@angular/core";
-import {Member} from "./model/member";
-import {Problem} from "./model/problem";
-import {AbstractComponent} from "./abstract.component";
-import {ToastsManager} from "ng2-toastr";
+import {Component} from '@angular/core';
+import {Member} from './model/member';
+import {Problem} from './model/problem';
+import {AbstractComponent} from './abstract.component';
 
 
 @Component({
@@ -11,23 +10,25 @@ import {ToastsManager} from "ng2-toastr";
 })
 export class StudentComponent extends AbstractComponent {
 
-  public txtAdd: string = '';
+  public txtAdd = '';
   public membersToShow: Set<Member> = new Set<Member>();
 
 
 
-  constructor(public problem:Problem, public toastr: ToastsManager) {
+  constructor(public problem: Problem) {
     super();
   }
 
 
   onAdd() {
-    if (this.txtAdd == '') return;
-    let m:Member = new Member(this.txtAdd);
-    let isAdded:boolean = this.problem.addMember(m);
+    if (this.txtAdd === '') { return; }
+    const m: Member = new Member(this.txtAdd);
+    const isAdded: boolean = this.problem.addMember(m);
 
-    if (isAdded)  this.txtAdd = '';
-    else  this.toastr.warning("Member's name must be unique.");
+    if (isAdded) {  this.txtAdd = ''; } else {
+      console.log('Can not be added');
+      /*this.toastr.warningToastr('Member\'s name must be unique.'); */
+    }
   }
 
 
@@ -45,20 +46,20 @@ export class StudentComponent extends AbstractComponent {
   }
 
   membersExcept(member: Member) {
-    let set: Set<Member> = new Set<Member>(this.problem.members);
+    const set: Set<Member> = new Set<Member>(this.problem.members);
     set.delete(member);
     return set;
   }
 
-  public onDelete(m:Member) {
+  public onDelete(m: Member) {
     this.problem.removeMember(m);
     this.membersToShow.delete(m);
   }
 
 
-  public toogle(m:Member) {
-    if (this.membersToShow.has(m)) this.membersToShow.delete(m);
-    else this.membersToShow.add(m);
+  public toogle(m: Member) {
+    if (this.membersToShow.has(m)) { this.membersToShow.delete(m); }
+    else { this.membersToShow.add(m); }
   }
 
 

@@ -1,10 +1,10 @@
-import {Injectable} from "@angular/core";
-import {Problem} from "./model/problem";
-import {Solution} from "./model/solution";
-import {Algorithm} from "./algorithms/algorithm";
-import {RandomSearch} from "./algorithms/random.search";
-import {HillClimbingAlgorithm} from "./algorithms/hill.climbing";
-import {EvolutionaryAlgorithm} from "./algorithms/evolutionary.algorithm";
+import {Injectable} from '@angular/core';
+import {Problem} from './model/problem';
+import {Solution} from './model/solution';
+import {Algorithm} from './algorithms/algorithm';
+import {RandomSearch} from './algorithms/random.search';
+import {HillClimbingAlgorithm} from './algorithms/hill.climbing';
+import {EvolutionaryAlgorithm} from './algorithms/evolutionary.algorithm';
 
 
 @Injectable()
@@ -17,19 +17,19 @@ export class ResultService {
 
 
   public calc(problem: Problem): Promise<Array<Solution>> {
-    var selectedAlgorithm = (this.algorithm != null) ? this.algorithm : new EvolutionaryAlgorithm();
+    const selectedAlgorithm = (this.algorithm != null) ? this.algorithm : new EvolutionaryAlgorithm();
     const p: Promise<Array<Solution>> = new Promise(
       (resolve, reject) => {
-        setTimeout(function () {
-          console.log("START ALGORITHM");
+        setTimeout(function() {
+          console.log('START ALGORITHM');
           console.log(selectedAlgorithm.constructor.name);
           console.log(selectedAlgorithm.max);
-          let results = selectedAlgorithm.solve(problem);
-          console.log("Found " + results.length + " solutions.")
-          console.log("END ALGORITHM");
-          console.log("---------------------------");
+          const results = selectedAlgorithm.solve(problem);
+          console.log('Found ' + results.length + ' solutions.');
+          console.log('END ALGORITHM');
+          console.log('---------------------------');
           resolve(results);
-        }, 0)
+        }, 0);
       }
     );
     return p;

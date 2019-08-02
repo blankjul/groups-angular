@@ -1,6 +1,6 @@
 <div class="input-group" *ngIf="problem.members.length > inGroup">
   <input type="number" class="form-control" placeholder="Add Group" [(ngModel)]="txtAdd"
-         (keypress)="($event.charCode==13)? onAdd() : return"/>
+         (keypress)="($event.charCode==13)? onAdd() : 0"/>
   <span class="input-group-btn">
         <button class="btn btn-default" (click)="onAdd()" type="button">Add</button>
       </span>

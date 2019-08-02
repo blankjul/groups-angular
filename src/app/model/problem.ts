@@ -40,7 +40,7 @@ export class Problem {
     });
 
 
-    // remove all group constraints
+    // remove all group constraints/Users/julesy/workspace/groups-angular/src/app/model/evaluator.ts
 
     let nextInOneGroup:Set<Set<Member>> = new Set<Set<Member>>();
     this.inOneGroup.forEach(group => {

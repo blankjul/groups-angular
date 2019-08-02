@@ -1,6 +1,6 @@
-import {Component, Input, OnInit, AfterViewInit, AfterViewChecked, OnChanges} from "@angular/core";
-import {AbstractComponent} from "./abstract.component";
-import {Problem} from "./model/problem";
+import {Component, OnInit} from '@angular/core';
+import {AbstractComponent} from './abstract.component';
+import {Problem} from './model/problem';
 
 @Component({
   selector: 'group-limits',
@@ -9,11 +9,11 @@ import {Problem} from "./model/problem";
 export class GroupLimitComponent extends AbstractComponent implements OnInit {
 
 
-  constructor (public problem:Problem){ super();}
+  constructor(public problem: Problem) { super(); }
 
-  public txtAdd: string = '';
+  public txtAdd = '';
 
-  public inGroup: number = 0;
+  public inGroup = 0;
 
 
   ngOnInit(): void {
@@ -23,7 +23,7 @@ export class GroupLimitComponent extends AbstractComponent implements OnInit {
 
 
   public onAdd() {
-    let i: number = Number(this.txtAdd);
+    const i: number = Number(this.txtAdd);
 
     if (i > 0 && this.inGroup + i <= this.problem.members.length) {
       this.problem.groupLimits.push(i);
@@ -40,8 +40,8 @@ export class GroupLimitComponent extends AbstractComponent implements OnInit {
     this.txtAdd = '';
   }
 
-  public isValid() : boolean {
-    return this.inGroup == this.problem.members.length;
+  public isValid(): boolean {
+    return this.inGroup === this.problem.members.length;
   }
 
 

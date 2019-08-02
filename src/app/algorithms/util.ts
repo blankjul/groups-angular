@@ -1,6 +1,5 @@
 import {Problem} from "../model/problem";
 import {Member} from "../model/member";
-import {group} from "@angular/core";
 
 
 export function crossover(a: Array<Set<Member>>, b: Array<Set<Member>>): Array<Set<Member>> {

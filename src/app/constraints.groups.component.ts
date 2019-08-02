@@ -1,7 +1,7 @@
-import {Component, Input} from "@angular/core";
-import {Problem} from "./model/problem";
-import {AbstractComponent} from "./abstract.component";
-import {Member} from "./model/member";
+import {Component, Input} from '@angular/core';
+import {Problem} from './model/problem';
+import {AbstractComponent} from './abstract.component';
+import {Member} from './model/member';
 
 
 @Component({
@@ -17,13 +17,11 @@ export class ConstraintsGroupComponent extends AbstractComponent {
   @Input() inOneGroup: boolean;
 
   public getGroups(): Set<Set<Member>> {
-    if (this.inOneGroup) return this.problem.inOneGroup;
-    else return this.problem.notInOneGroup;
+    if (this.inOneGroup) { return this.problem.inOneGroup; } else { return this.problem.notInOneGroup; }
   }
 
   public hover(): string {
-    if (this.inOneGroup) return 'success';
-    else return 'danger';
+    if (this.inOneGroup) { return 'success'; } else { return 'danger'; }
   }
 
   public onDelete(group: Set<Member>) {

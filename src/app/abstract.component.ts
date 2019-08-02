@@ -1,9 +1,9 @@
-import {Input} from "@angular/core";
-import {Problem} from "./model/problem";
+import {Input} from '@angular/core';
+import {Problem} from './model/problem';
 
 export class AbstractComponent  {
 
-  public isValid() : boolean {
+  public isValid(): boolean {
     return true;
   }
 

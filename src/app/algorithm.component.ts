@@ -1,8 +1,8 @@
-import {Problem} from "./model/problem";
-import {AbstractComponent} from "./abstract.component";
-import {ResultService} from "./result.service";
-import {Component, OnInit} from "@angular/core";
-import {Algorithm} from "./algorithms/algorithm";
+import {Problem} from './model/problem';
+import {AbstractComponent} from './abstract.component';
+import {ResultService} from './result.service';
+import {Component, OnInit} from '@angular/core';
+import {Algorithm} from './algorithms/algorithm';
 
 
 @Component({
@@ -12,8 +12,8 @@ import {Algorithm} from "./algorithms/algorithm";
 export class AlgorithmComponent extends AbstractComponent implements OnInit{
 
 
-  algorithm:Algorithm;
-  maxEvaluations: number = 10000;
+  algorithm: Algorithm;
+  maxEvaluations = 10000;
 
 
   constructor(public problem: Problem, public service: ResultService) {
@@ -23,7 +23,7 @@ export class AlgorithmComponent extends AbstractComponent implements OnInit{
 
   ngOnInit(): void {
     this.algorithm = this.service.algorithm;
-    if (this.algorithm != null) this.maxEvaluations = this.service.algorithm.max
+    if (this.algorithm != null) { this.maxEvaluations = this.service.algorithm.max }
   }
 
 

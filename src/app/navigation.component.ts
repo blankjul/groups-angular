@@ -1,6 +1,5 @@
-import {Component, Input} from "@angular/core";
-import {AbstractComponent} from "./abstract.component";
-import {AppComponent} from "./app.component";
+import {Component, Input} from '@angular/core';
+import {AppComponent} from './app.component';
 
 
 @Component({

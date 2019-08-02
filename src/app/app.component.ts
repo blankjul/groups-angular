@@ -1,85 +1,43 @@
-import {Component, OnInit, ViewChild, ViewContainerRef, ComponentFactoryResolver} from "@angular/core";
-import {Problem} from "./model/problem";
-import {toJson, fromJson} from "./util/io";
-import {AbstractComponent} from "./abstract.component";
-import {StudentComponent} from "./student.component";
-import {ConstraintsComponent} from "./constraints.component";
-import {GroupLimitComponent} from "./group.limits.component";
-import {ResultComponent} from "./result.component";
-import {NavigationComponent} from "./navigation.component";
-import {AlgorithmComponent} from "./algorithm.component";
-import {ToastsManager} from "ng2-toastr";
-
+import {Component, ComponentFactoryResolver, OnInit, ViewChild, ViewContainerRef} from '@angular/core';
+import {Problem} from './model/problem';
+import {fromJson, toJson} from './util/io';
+import {AbstractComponent} from './abstract.component';
+import {StudentComponent} from './student.component';
+import {ConstraintsComponent} from './constraints.component';
+import {GroupLimitComponent} from './group.limits.component';
+import {ResultComponent} from './result.component';
+import {NavigationComponent} from './navigation.component';
+import {AlgorithmComponent} from './algorithm.component';
 
 @Component({
-  selector: 'app',
+  selector: 'app-root',
   templateUrl: './app.component.html',
-  entryComponents: [NavigationComponent, StudentComponent, ConstraintsComponent, GroupLimitComponent, ResultComponent, AlgorithmComponent]
+  entryComponents: [
+    NavigationComponent,
+    StudentComponent,
+    ConstraintsComponent,
+    GroupLimitComponent,
+    ResultComponent,
+    AlgorithmComponent]
 })
 export class AppComponent extends AbstractComponent implements OnInit {
 
-  @ViewChild('content', {read: ViewContainerRef}) content: any;
+  constructor(public problem: Problem,
+              private vc: ViewContainerRef,
+              private componentFactoryResolver: ComponentFactoryResolver) {
+    super();
+
+  }
+
+  @ViewChild('content', {static: true, read: ViewContainerRef}) content: ViewContainerRef;
 
   public component: any;
-  public counter: number = 0;
+  public counter = 0;
   public components: any[] = [StudentComponent, ConstraintsComponent, GroupLimitComponent, AlgorithmComponent, ResultComponent];
   public txtInput: string;
-  public loading: boolean;
-
-  constructor(public problem: Problem, private vRef: ViewContainerRef, private componentFactoryResolver: ComponentFactoryResolver, public toastr: ToastsManager) {
-    super();
-    this.toastr.setRootViewContainerRef(vRef);
-  }
-
-  ngOnInit(): void {
-    //fromJson(this.problem, this.json);
-    this.update();
-  }
 
 
-  public update() {
-    if (this.component != null) this.component.instance.submit();
-    this.content.clear();
-    let factory = this.componentFactoryResolver.resolveComponentFactory(this.components[this.counter]);
-    this.component = this.content.createComponent(factory);
-  }
-
-
-  public hasPrevious() {
-    return this.counter > 0;
-  }
-
-  public hasNext() {
-    return this.counter < this.components.length - 1 && this.component.instance.isValid();
-  }
-
-
-  public onPrevious() {
-    this.counter--;
-    this.update();
-  }
-
-  public onNext() {
-    this.counter += 1;
-    this.update();
-  }
-
-
-  public onDialog() {
-    this.txtInput = toJson(this.problem);
-  }
-
-
-  public onDialogSave() {
-    this.problem.members = [];
-    this.problem.groupLimits = [];
-    this.problem.inOneGroup.clear();
-    this.problem.notInOneGroup.clear();
-    fromJson(this.problem, this.txtInput);
-  }
-
-
-  public json: string = `{
+  public json = `{
     "groupLimits": [4,4,4,4],
   "members": [
     {
@@ -176,7 +134,60 @@ export class AppComponent extends AbstractComponent implements OnInit {
       "Bünjamin E."
       ]
     ]
-}`
+}`;
+
+  ngOnInit(): void {
+    /*fromJson(this.problem, this.json);*/
+    this.update();
+  }
+
+
+  public update() {
+    if (this.component != null) { this.component.instance.submit(); }
+    this.content.clear();
+    const factory = this.componentFactoryResolver.resolveComponentFactory(this.components[this.counter]);
+    this.component = this.content.createComponent(factory);
+  }
+
+
+  public hasPrevious() {
+    return this.counter > 0;
+  }
+
+  public hasNext() {
+    return this.counter < this.components.length - 1 && this.component.instance.isValid();
+  }
+
+
+  public onPrevious() {
+    this.counter--;
+    this.update();
+  }
+
+  public onNext() {
+    this.counter += 1;
+    this.update();
+  }
+
+
+  public onDialog() {
+    this.txtInput = toJson(this.problem);
+  }
+
+
+  public onDialogSave() {
+    this.problem.members = [];
+    this.problem.groupLimits = [];
+    this.problem.inOneGroup.clear();
+    this.problem.notInOneGroup.clear();
+    fromJson(this.problem, this.txtInput);
+  }
 
 
 }
+
+
+
+
+
+
